@@ -100,21 +100,23 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onNavigate }) => {
           <button
             id="print-cv-button"
             onClick={handlePrint}
-            className="px-3.5 py-2 min-h-[42px] text-xs font-mono rounded-md border border-[#2D3446] hover:border-[#414B64] text-[#CBD5E1] hover:text-white bg-[#161924] hover:bg-[#1E2333] transition-all flex items-center gap-1.5 active:scale-95 shadow-sm"
+            title="Open print dialog to print or save as PDF"
+            className="px-3.5 py-2 min-h-[42px] text-xs font-mono font-medium rounded-md border border-[#3E4861] hover:border-sky-400 text-white hover:text-white bg-[#1A1F2D] hover:bg-[#22293C] transition-all flex items-center gap-1.5 active:scale-95 shadow-sm"
           >
-            <Printer className="w-3.5 h-3.5 text-[#8E97A8]" />
-            <span>Print Layout</span>
+            <Printer className="w-3.5 h-3.5 text-sky-400" />
+            <span>Print / Save PDF</span>
           </button>
 
           {siteConfig.resumeUrl && (
-            <a
+            <button
               id="download-cv-button"
-              href={siteConfig.resumeUrl}
+              onClick={handlePrint}
+              title="Print or Save CV as PDF"
               className="px-4 py-2 min-h-[42px] text-xs font-mono font-medium rounded-md bg-white text-black hover:bg-[#E0E0E0] transition-colors flex items-center gap-1.5 shadow-sm active:scale-95"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Curriculum Vitae</span>
-            </a>
+              <span>Export CV (PDF)</span>
+            </button>
           )}
         </div>
       </div>
@@ -257,8 +259,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onNavigate }) => {
                         <span>Total Units: <strong className="text-white font-mono">{sem.totalUnits}</strong></span>
                         {sem.status === 'completed' ? (
                           <>
-                            <span className="text-[#444444]">·</span>
-                            <span className="text-[#888888] flex items-center gap-1 bg-[#161616] px-2 py-0.5 rounded-sm border border-[#222222]">
+                            <span className="no-print text-[#444444]">·</span>
+                            <span className="no-print text-[#888888] flex items-center gap-1 bg-[#161616] px-2 py-0.5 rounded-sm border border-[#222222]">
                               <span>Scroll lateral for grades</span>
                               <span className="text-white">→</span>
                             </span>
@@ -417,7 +419,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onNavigate }) => {
             <span>Selected Projects</span>
             <button
               onClick={() => onNavigate('projects')}
-              className="text-[#888888] hover:text-white transition-colors text-[11px] font-mono flex items-center gap-1"
+              className="no-print text-[#888888] hover:text-white transition-colors text-[11px] font-mono flex items-center gap-1"
             >
               <span>View all projects</span>
               <span>→</span>
@@ -480,7 +482,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onNavigate }) => {
       {/* ────────────────────────────────────────────────────────── */}
       {/* 5. LIFE & FOCUS LEDGER (PLACED AT THE END AS REQUESTED) */}
       {/* ────────────────────────────────────────────────────────── */}
-      <section id="life-focus-ledger" className="space-y-6 pt-4 scroll-mt-20">
+      <section id="life-focus-ledger" className="space-y-6 pt-4 scroll-mt-20 no-print">
         <div className="flex items-baseline justify-between border-b border-[#1E1E1E] pb-3">
           <div>
             <div className="font-mono text-xs uppercase tracking-wider text-[#737373] mb-1">

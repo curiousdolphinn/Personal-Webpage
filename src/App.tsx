@@ -152,13 +152,15 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0D0F14] text-[#E2E8F0] selection:bg-[#253047] selection:text-[#FFFFFF] transition-colors duration-200">
       {/* Top Navigation */}
-      <Navbar
-        currentView={currentView}
-        onNavigate={handleNavigate}
-        isDark={isDark}
-        onToggleTheme={() => setIsDark(!isDark)}
-        onOpenSearch={() => setIsSearchOpen(true)}
-      />
+      <div className="no-print">
+        <Navbar
+          currentView={currentView}
+          onNavigate={handleNavigate}
+          isDark={isDark}
+          onToggleTheme={() => setIsDark(!isDark)}
+          onOpenSearch={() => setIsSearchOpen(true)}
+        />
+      </div>
 
       {/* Main Content Area with max-width container & phone-safe bottom padding */}
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-28 md:pb-12">
@@ -166,13 +168,17 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <div className="no-print">
+        <Footer onNavigate={handleNavigate} />
+      </div>
 
       {/* Mobile Sticky Bottom Navigation (Phone navigation comfort) */}
-      <MobileBottomNav
-        currentView={currentView}
-        onNavigate={handleNavigate}
-      />
+      <div className="no-print">
+        <MobileBottomNav
+          currentView={currentView}
+          onNavigate={handleNavigate}
+        />
+      </div>
 
       {/* Global Search Modal */}
       <SearchModal
